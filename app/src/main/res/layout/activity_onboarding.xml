@@ -60,6 +60,7 @@
             android:id="@+id/nextBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:text="Next"
             android:layout_gravity="center"/>
     </LinearLayout>
