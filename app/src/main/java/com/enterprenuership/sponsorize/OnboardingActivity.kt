@@ -17,7 +17,7 @@ class OnboardingActivity : AppCompatActivity() {
     private lateinit var dotsLayout: LinearLayout
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
-    private val sliderDelay: Long = 10000 // 3 detik
+    private val sliderDelay: Long = 7000 // 7 detik
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +56,8 @@ class OnboardingActivity : AppCompatActivity() {
 
         // Handle next button
         binding.nextBtn.setOnClickListener {
-            val intentToSignUp = Intent(this, SignUpActivity::class.java)
-            startActivity(intentToSignUp)
+            val intentToLanding = Intent(this, LandingActivity::class.java)
+            startActivity(intentToLanding)
             finish()
         }
     }

@@ -13,9 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SPONSORIZE">
         <activity
-            android:name=".SignUpActivity"
+            android:name=".LandingActivity"
             android:exported="false" />
-        <!-- Onboarding Activity - Launcher -->
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" /> <!-- Onboarding Activity - Launcher -->
         <activity
             android:name=".OnboardingActivity"
             android:exported="true">
@@ -27,7 +29,7 @@
         </activity> <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
