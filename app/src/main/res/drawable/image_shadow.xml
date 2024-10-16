@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="10dp" />
+            <gradient
+                android:angle="270"
+                android:startColor="#99000000"
+            android:endColor="#00000000"
+            android:type="linear" />
+            <size android:width="200dp" android:height="200dp" /> <!-- Use fixed dimensions -->
+            <padding android:left="4dp" android:top="4dp" android:right="4dp" android:bottom="4dp" /> <!-- Padding for shadow effect -->
+        </shape>
+    </item>
+
+    <!-- Image Background -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="10dp" />
+            <solid android:color="@android:color/transparent" /> <!-- Transparent to show the image -->
+        </shape>
+    </item>
+</layer-list>

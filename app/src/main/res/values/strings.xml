@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SPONSORIZE</string>
+    <string name="sign_in_text">Already have an account? <u>Sign In</u></string>
 </resources>

@@ -1,16 +1,18 @@
 package com.enterprenuership.sponsorize
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.enterprenuership.sponsorize.databinding.ActivityOnboardingBinding
 
 class OnboardingActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityOnboardingBinding
     private lateinit var viewPager2: ViewPager2
     private lateinit var dotsLayout: LinearLayout
     private lateinit var handler: Handler
@@ -19,8 +21,8 @@ class OnboardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_onboarding)
+        binding = ActivityOnboardingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         viewPager2 = findViewById(R.id.imageSlider)
         dotsLayout = findViewById(R.id.dots)
@@ -50,6 +52,13 @@ class OnboardingActivity : AppCompatActivity() {
             val nextPos = (viewPager2.currentItem + 1) % images.size
             viewPager2.currentItem = nextPos
             handler.postDelayed(runnable, sliderDelay)
+        }
+
+        // Handle next button
+        binding.nextBtn.setOnClickListener {
+            val intentToSignUp = Intent(this, SignUpActivity::class.java)
+            startActivity(intentToSignUp)
+            finish()
         }
     }
 
