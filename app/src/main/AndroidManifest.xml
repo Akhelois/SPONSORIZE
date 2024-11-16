@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SPONSORIZE">
         <activity
+            android:name=".ChooseRoleActivity"
+            android:exported="false" />
+        <activity
             android:name=".LandingActivity"
             android:exported="false" />
         <activity

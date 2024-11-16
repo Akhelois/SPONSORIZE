@@ -1,4 +1,5 @@
 package com.enterprenuership.sponsorize// com.enterprenuership.sponsorize.SignUpActivity.kt
+import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -14,5 +15,11 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Handle next button
+        binding.nextBtn.setOnClickListener {
+            val intentToChooseRole = Intent(this, ChooseRoleActivity::class.java)
+            startActivity(intentToChooseRole)
+        }
     }
 }
