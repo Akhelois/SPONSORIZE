@@ -1,14 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.HomeFragment">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/welcomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome, "
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/welcomeUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wilson!"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/notificationIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icon_notifications"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Notification Icon" />
+
+        <ImageView
+            android:id="@+id/messageIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icon_message"
+            android:contentDescription="Message Icon" />
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="Most Apply Sponsorship"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/light_blue" />
 
-</FrameLayout>
+    <!-- Horizontal Scroll View for Sponsor Logos -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/image_1"
+                android:background="@drawable/bg_circle_sponsor"
+                android:contentDescription="Sponsor 1" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/image_1"
+                android:background="@drawable/bg_circle_sponsor"
+                android:contentDescription="Sponsor 2" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/image_1"
+                android:background="@drawable/bg_circle_sponsor"
+                android:contentDescription="Sponsor 3" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/image_1"
+                android:background="@drawable/bg_circle_sponsor"
+                android:contentDescription="Sponsor 4" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/image_1"
+                android:background="@drawable/bg_circle_sponsor"
+                android:contentDescription="Sponsor 5" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Search and Filter Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
+
+        <EditText
+            android:id="@+id/searchInput"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:hint="Search"
+            android:drawableEnd="@drawable/icon_search"
+            android:padding="12dp"
+            android:background="@drawable/bg_search_input" />
+
+        <ImageView
+            android:id="@+id/filterIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_filter"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_circle"
+            android:contentDescription="Filter Icon" />
+    </LinearLayout>
+
+    <!-- Filter Chips -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filter"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/educationChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip"
+            android:text="Education"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:padding="8dp" />
+
+        <Button
+            android:id="@+id/socialChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip"
+            android:text="Social"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:padding="8dp"
+            android:layout_marginStart="8dp" />
+
+        <TextView
+            android:id="@+id/seeAllChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See all >"
+            android:textSize="12sp"
+            android:textColor="@color/blue"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- RecyclerView for Sponsors -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sponsorRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="8dp" />
+</LinearLayout>

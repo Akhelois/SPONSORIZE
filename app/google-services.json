@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "894253117992",
+    "project_id": "sponsorize-93aff",
+    "storage_bucket": "sponsorize-93aff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894253117992:android:d99665740d6ccdd3ff3b1d",
+        "android_client_info": {
+          "package_name": "com.enterprenuership.sponsorize"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg2-jGxSU2-Eh3whiUbqGxTybOv2omjJM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
