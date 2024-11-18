@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".activities.SignUpActivity">
 
     <ImageView
         android:id="@+id/headerImageShadow"
@@ -61,8 +61,6 @@
         android:layout_below="@id/headerImage">
 
         <!-- Email Input -->
-
-        <!-- Password Input with Eye Icon -->
 
         <EditText
             android:id="@+id/emailInput"

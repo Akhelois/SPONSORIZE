@@ -1,9 +1,6 @@
-package com.enterprenuership.sponsorize// com.enterprenuership.sponsorize.SignUpActivity.kt
+package com.enterprenuership.sponsorize.activities// com.enterprenuership.sponsorize.activities.SignUpActivity.kt
 import android.content.Intent
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.UnderlineSpan
 import androidx.appcompat.app.AppCompatActivity
 import com.enterprenuership.sponsorize.databinding.ActivitySignUpBinding
 

@@ -1,4 +1,4 @@
-package com.enterprenuership.sponsorize
+package com.enterprenuership.sponsorize.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.enterprenuership.sponsorize.R
 import com.enterprenuership.sponsorize.databinding.ActivityOnboardingBinding
 
 class OnboardingActivity : AppCompatActivity() {

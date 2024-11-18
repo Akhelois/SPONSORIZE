@@ -1,8 +1,9 @@
-package com.enterprenuership.sponsorize
+package com.enterprenuership.sponsorize.activities
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.enterprenuership.sponsorize.R
 import com.enterprenuership.sponsorize.databinding.ActivityChooseRoleBinding
 
 class ChooseRoleActivity : AppCompatActivity() {

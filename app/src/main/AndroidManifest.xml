@@ -13,19 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SPONSORIZE">
         <activity
-            android:name=".SignInActivity"
+            android:name=".activities.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".ChooseRoleActivity"
+            android:name=".activities.ChooseRoleActivity"
             android:exported="false" />
         <activity
-            android:name=".LandingActivity"
+            android:name=".activities.LandingActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".activities.SignUpActivity"
             android:exported="false" /> <!-- Onboarding Activity - Launcher -->
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".activities.OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity> <!-- Main Activity -->
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="false" />
     </application>
 

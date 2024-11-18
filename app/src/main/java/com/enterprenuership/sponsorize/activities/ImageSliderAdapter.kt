@@ -1,10 +1,11 @@
-package com.enterprenuership.sponsorize
+package com.enterprenuership.sponsorize.activities
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.enterprenuership.sponsorize.R
 
 class ImageSliderAdapter(private val images: List<Int>) : RecyclerView.Adapter<ImageSliderAdapter.SliderViewHolder>() {
 

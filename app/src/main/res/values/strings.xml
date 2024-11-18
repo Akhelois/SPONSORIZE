@@ -2,4 +2,8 @@
     <string name="app_name">SPONSORIZE</string>
     <string name="sign_in_text">Already have an account? <u>Sign In</u></string>
     <string name="sign_up_text">Dont have an account? <u>Sign Up</u></string>
+    <string name="homeBtn">Home</string>
+    <string name="eventBtn">Event</string>
+    <string name="uptBtn">Updates</string>
+    <string name="profileBtn">Profile</string>
 </resources>

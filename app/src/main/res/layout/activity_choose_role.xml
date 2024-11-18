@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="80dp"
     android:padding="20dp"
-    tools:context=".ChooseRoleActivity">
+    tools:context=".activities.ChooseRoleActivity">
 
     <TextView
         android:id="@+id/title"
