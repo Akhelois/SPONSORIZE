@@ -29,15 +29,19 @@ class SponsorAdapter(private var sponsorList: List<Sponsor>) : RecyclerView.Adap
     private lateinit var binding: ItemSponsorBinding
 
     class SponsorViewHolder(private val binding: ItemSponsorBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(sponsor: Sponsor) {
-            // Bind data ke layout menggunakan Data Binding
+        fun bind(sponsor: Sponsor, onItemClickCallback: SponsorAdapter.IOnItemClickCallback) {
             binding.sponsor = sponsor
+
+            // Tambahkan klik listener
+            binding.root.setOnClickListener {
+                onItemClickCallback.onItemClick(sponsor)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SponsorViewHolder {
-        // Inflate layout untuk view holder
-        binding = ItemSponsorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        // Inflate the layout using DataBindingUtil or a direct LayoutInflater
+        val binding = ItemSponsorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SponsorViewHolder(binding)
     }
 
@@ -47,10 +51,13 @@ class SponsorAdapter(private var sponsorList: List<Sponsor>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: SponsorViewHolder, position: Int) {
         val sponsor = sponsorList[position]
-        holder.bind(sponsor)
+        holder.bind(sponsor, onItemClickCallback)
+
+        // Set click listener on the item
         holder.itemView.setOnClickListener {
-            // Handle item click
-            onItemClickCallback.onItemClick(sponsorList[position])
+            if (::onItemClickCallback.isInitialized) {
+                onItemClickCallback.onItemClick(sponsor)
+            }
         }
     }
 }

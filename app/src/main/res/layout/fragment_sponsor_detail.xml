@@ -1,14 +1,152 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.SponsorDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/white">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header dengan Gambar dan Tombol Back -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+                <!-- Gambar Header -->
+                <ImageView
+                    android:id="@+id/sponsorHeaderImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/image_1" />
+
+                <!-- Tombol Back -->
+                <ImageButton
+                    android:id="@+id/backButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/icon_arrow_back"
+                    android:tint="@color/white"
+                    android:contentDescription="Back" />
+            </FrameLayout>
+
+            <!-- Konten Utama -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center">
+
+                <!-- Logo Sponsor -->
+                <ImageView
+                    android:id="@+id/sponsorLogo"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:scaleType="centerInside"
+                    tools:src="@drawable/image_1" />
+
+                <!-- Nama Sponsor -->
+                <TextView
+                    android:id="@+id/sponsorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name Sponsorship"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginBottom="4dp"
+                    android:textColor="@color/black" />
+
+                <!-- Perusahaan Sponsor -->
+                <TextView
+                    android:id="@+id/sponsorCompany"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PT Mitra Adiperkasa"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:drawableEnd="@drawable/icon_verified"
+                    android:drawablePadding="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/blue" />
+
+                <!-- Deadline -->
+                <TextView
+                    android:id="@+id/sponsorDeadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deadline of submission of proposals is on 10 Nov"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/gray" />
+
+                <!-- Deskripsi -->
+                <TextView
+                    android:id="@+id/sponsorDescriptionTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/sponsorDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="To support health, happiness and a more fulfilling lifestyle for our customers through a portfolio of world-class brands and an omni-channel retail network."
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/black" />
+
+                <!-- Kriteria -->
+                <TextView
+                    android:id="@+id/sponsorCriteriaTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Our Criteria"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/sponsorCriteria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Potential for long-term and sustainable partnerships or relationships with key stakeholders and other regional organizations.\n\n• Has a good collaboration to make the event better to have people come to join the event."
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"
+                    android:layout_marginBottom="24dp"
+                    android:textColor="@color/black" />
+
+                <!-- Tombol Apply -->
+                <Button
+                    android:id="@+id/applyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apply Now!"
+                    android:backgroundTint="@color/blue"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="24dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

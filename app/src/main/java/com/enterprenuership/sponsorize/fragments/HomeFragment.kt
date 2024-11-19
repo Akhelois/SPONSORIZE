@@ -1,5 +1,6 @@
 package com.enterprenuership.sponsorize.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.enterprenuership.sponsorize.R
 import com.enterprenuership.sponsorize.adapters.SponsorAdapter
 import com.enterprenuership.sponsorize.databinding.FragmentHomeBinding
 import com.enterprenuership.sponsorize.models.Sponsor
@@ -36,6 +39,32 @@ class HomeFragment : Fragment() {
 
         fetchUsername(intentUID)
         fetchSponsors()
+
+        sponsorAdapter.setOnItemClickCallback(object : SponsorAdapter.IOnItemClickCallback {
+            override fun onItemClick(sponsor: Sponsor) {
+                // Buat Bundle untuk mengirim data sponsor ke SponsorDetailFragment
+                val bundle = Bundle().apply {
+                    putString("sponsorId", sponsor.sponsorId)
+                    putString("sponsorName", sponsor.sponsorName)
+                    putString("sponsorCompany", sponsor.sponsorCompany)
+                    putString("sponsorCategory", sponsor.sponsorCategory)
+                    putString("sponsorCriteria", sponsor.sponsorCriteria.joinToString("\n"))
+                    putString("sponsorDescription", sponsor.sponsorDescription)
+                    putString("sponsorLogo", sponsor.sponsorLogo)
+                    putString("imageHeader", sponsor.imageHeader)
+                }
+
+                // Navigasi ke SponsorDetailFragment
+                val sponsorDetailFragment = SponsorDetailFragment().apply {
+                    arguments = bundle
+                }
+
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, sponsorDetailFragment)
+                    .addToBackStack(null)
+                    .commit()
+            }
+        })
 
         return binding.root
     }
@@ -89,6 +118,7 @@ class HomeFragment : Fragment() {
                     sponsorCategory = document.getString("sponsorCategory") ?: "Uncategorized",
                     sponsorDescription = document.getString("sponsorDescription") ?: "No Description",
                     sponsorLogo = document.getString("sponsorLogo") ?: "Logo",
+                    imageHeader = document.getString("imageHeader") ?: "Header",
                     sponsorCriteria = document.get("sponsorCriteria") as? List<String> ?: listOf()
                 )
                 sponsorList.add(sponsor)

@@ -5,6 +5,7 @@ data class Sponsor(
     var sponsorName: String,
     var sponsorCompany: String,
     var sponsorLogo: String,
+    var imageHeader: String,
     var sponsorCategory: String,
     var sponsorDescription: String,
     var sponsorCriteria: List<String> = listOf()
