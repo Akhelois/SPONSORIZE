@@ -7,5 +7,5 @@ data class Sponsor(
     var sponsorLogo: String,
     var sponsorCategory: String,
     var sponsorDescription: String,
-    var sponsorCriteria: String
+    var sponsorCriteria: List<String> = listOf()
 )

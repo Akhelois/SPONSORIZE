@@ -1,7 +1,6 @@
 package com.enterprenuership.sponsorize.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.enterprenuership.sponsorize.databinding.ItemSponsorBinding
@@ -9,44 +8,49 @@ import com.enterprenuership.sponsorize.models.Sponsor
 
 class SponsorAdapter(private var sponsorList: List<Sponsor>) : RecyclerView.Adapter<SponsorAdapter.SponsorViewHolder>() {
 
-    // Define ViewHolder
-    inner class SponsorViewHolder(private val binding: ItemSponsorBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(sponsor: Sponsor) {
-            binding.sponsorName.text = sponsor.sponsorName
-            binding.sponsorBusiness.text = sponsor.sponsorCategory
-            binding.sponsorCompany.text = sponsor.sponsorCompany
-
-            // Handle item click
-            binding.moreBtn.setOnClickListener {
-                onItemClickCallback?.onItemClick(sponsor)
-            }
-        }
-    }
-
-    // Callback Interface
+    // Interface untuk callback item click
     interface IOnItemClickCallback {
         fun onItemClick(sponsor: Sponsor)
     }
 
-    private var onItemClickCallback: IOnItemClickCallback? = null
+    private lateinit var onItemClickCallback: IOnItemClickCallback
 
-    fun setOnItemClickCallback(callback: IOnItemClickCallback) {
-        this.onItemClickCallback = callback
+    // Setter untuk callback item click
+    fun setOnItemClickCallback(onItemClickCallback: IOnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SponsorViewHolder {
-        val binding = ItemSponsorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return SponsorViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: SponsorViewHolder, position: Int) {
-        holder.bind(sponsorList[position])
-    }
-
-    override fun getItemCount(): Int = sponsorList.size
-
+    // Method untuk memperbarui data sponsor list
     fun updateData(newSponsorList: List<Sponsor>) {
         sponsorList = newSponsorList
         notifyDataSetChanged()
+    }
+
+    private lateinit var binding: ItemSponsorBinding
+
+    class SponsorViewHolder(private val binding: ItemSponsorBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(sponsor: Sponsor) {
+            // Bind data ke layout menggunakan Data Binding
+            binding.sponsor = sponsor
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SponsorViewHolder {
+        // Inflate layout untuk view holder
+        binding = ItemSponsorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return SponsorViewHolder(binding)
+    }
+
+    override fun getItemCount(): Int {
+        return sponsorList.size
+    }
+
+    override fun onBindViewHolder(holder: SponsorViewHolder, position: Int) {
+        val sponsor = sponsorList[position]
+        holder.bind(sponsor)
+        holder.itemView.setOnClickListener {
+            // Handle item click
+            onItemClickCallback.onItemClick(sponsorList[position])
+        }
     }
 }

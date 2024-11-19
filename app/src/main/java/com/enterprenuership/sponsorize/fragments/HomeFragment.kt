@@ -18,22 +18,36 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var sponsorAdapter: SponsorAdapter
     private lateinit var db: FirebaseFirestore
+    private val sponsorList = mutableListOf<Sponsor>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         db = FirebaseFirestore.getInstance()
         val intentUID = arguments?.getString("uid")
-        Log.d("HomeFragment", "${arguments?.getString("uid")}")
+        Log.d("HomeFragment", "Received UID: $intentUID")
 
-        sponsorAdapter = SponsorAdapter(emptyList())
+        sponsorAdapter = SponsorAdapter(sponsorList)
         binding.sponsorRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.sponsorRecyclerView.adapter = sponsorAdapter
 
-        val docRef = db.collection("Users").document(intentUID.toString())
+        fetchUsername(intentUID)
+        fetchSponsors()
+
+        return binding.root
+    }
+
+    private fun fetchUsername(uid: String?) {
+        if (uid.isNullOrEmpty()) {
+            Toast.makeText(requireContext(), "UID not provided", Toast.LENGTH_SHORT).show()
+            Log.e("HomeFragment", "UID is null or empty")
+            return
+        }
+
+        val docRef = db.collection("Users").document(uid)
         docRef.addSnapshotListener { snapshot, error ->
             if (error != null) {
                 Toast.makeText(requireContext(), "Error: ${error.message}", Toast.LENGTH_SHORT).show()
@@ -42,18 +56,45 @@ class HomeFragment : Fragment() {
             }
 
             if (snapshot != null && snapshot.exists()) {
-                val username = snapshot.getString("username")
+                val username = snapshot.getString("username") ?: "Unknown User"
                 binding.welcomeUsername.text = "$username!"
                 Log.d("HomeFragment", "Username: $username")
             } else {
-                Toast.makeText(requireContext(), "Document not found", Toast.LENGTH_SHORT).show()
-                Log.e("HomeFragment", "Document not found for UID: $intentUID")
+                Toast.makeText(requireContext(), "User not found", Toast.LENGTH_SHORT).show()
+                Log.e("HomeFragment", "Document not found for UID: $uid")
             }
         }
+    }
 
-        // Fetch data from Firestore
-//        fetchSponsors()
+    private fun fetchSponsors() {
+        db.collection("Sponsors").addSnapshotListener { snapshots, error ->
+            if (error != null) {
+                Log.e("HomeFragment", "Error fetching sponsors: ${error.message}")
+                Toast.makeText(requireContext(), "Error loading sponsors", Toast.LENGTH_SHORT).show()
+                return@addSnapshotListener
+            }
 
-        return binding.root
+            if (snapshots == null || snapshots.isEmpty) {
+                Log.d("HomeFragment", "No sponsors found")
+                Toast.makeText(requireContext(), "No sponsors available", Toast.LENGTH_SHORT).show()
+                return@addSnapshotListener
+            }
+
+            sponsorList.clear()
+            for (document in snapshots) {
+                val sponsor = Sponsor(
+                    sponsorId = document.getString("sponsorId") ?: "",
+                    sponsorName = document.getString("sponsorName") ?: "Unknown Name",
+                    sponsorCompany = document.getString("sponsorCompany") ?: "Unknown Company",
+                    sponsorCategory = document.getString("sponsorCategory") ?: "Uncategorized",
+                    sponsorDescription = document.getString("sponsorDescription") ?: "No Description",
+                    sponsorLogo = document.getString("sponsorLogo") ?: "Logo",
+                    sponsorCriteria = document.get("sponsorCriteria") as? List<String> ?: listOf()
+                )
+                sponsorList.add(sponsor)
+            }
+            sponsorAdapter.notifyDataSetChanged()
+            Log.d("HomeFragment", "Sponsors loaded: ${sponsorList.size}")
+        }
     }
 }

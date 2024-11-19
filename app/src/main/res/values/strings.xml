@@ -6,4 +6,5 @@
     <string name="eventBtn">Event</string>
     <string name="uptBtn">Updates</string>
     <string name="profileBtn">Profile</string>
+    <string name="hello_blank_fragment">Under Development</string>
 </resources>

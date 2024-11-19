@@ -1,36 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/sponsorName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name Sponsorship"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+    <data>
+        <variable
+            name="sponsor"
+            type="com.enterprenuership.sponsorize.models.Sponsor" />
+    </data>
 
-    <TextView
-        android:id="@+id/sponsorBusiness"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Business Type"
-        android:textSize="14sp" />
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="6dp"
+        android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/sponsorCompany"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Company Name"
-        android:textSize="14sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
-    <TextView
-        android:id="@+id/moreBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="More"
-        android:textColor="@android:color/holo_blue_light" />
-</LinearLayout>
+            <!-- Logo Sponsor -->
+            <ImageView
+                android:id="@+id/sponsorLogo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitCenter"
+                app:imageUrl="@{sponsor.sponsorLogo}"
+                tools:src="@drawable/image_1" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1">
+
+                <!-- Nama Sponsorship -->
+                <TextView
+                    android:id="@+id/sponsorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{sponsor.sponsorName}"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="Name Sponsorship" />
+
+                <!-- Kategori Bisnis -->
+                <TextView
+                    android:id="@+id/sponsorCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@{sponsor.sponsorCategory}"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/darker_gray"
+                    tools:text="Retail Business" />
+
+                <!-- Nama Perusahaan -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/sponsorCompany"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{sponsor.sponsorCompany}"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/holo_blue_dark"
+                        tools:text="PT Mitra Adiperkasa" />
+
+                    <!-- Ikon Verifikasi -->
+                    <ImageView
+                        android:id="@+id/verifiedIcon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="4dp"
+                        android:src="@drawable/icon_verified"
+                        android:contentDescription="Verified Icon"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Tombol More -->
+            <TextView
+                android:id="@+id/moreBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More"
+                android:textColor="@android:color/holo_blue_light"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="end"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
