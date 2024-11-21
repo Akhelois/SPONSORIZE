@@ -38,6 +38,11 @@ class SponsorDetailFragment : Fragment() {
         Glide.with(this).load(imageHeader).into(binding.sponsorHeaderImage)
         Glide.with(this).load(sponsorLogo).into(binding.sponsorLogo)
 
+        // Handle Back Button
+        binding.backButton.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+
         return binding.root
     }
 }
